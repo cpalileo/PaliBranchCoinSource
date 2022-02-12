@@ -39,7 +39,7 @@ var getCryptoCompareDataBySymbol = function (symbol) {
 
 var getCoinLayerDataBySymbol = function (symbol) {
   var coinLayerURL =
-    "https://api.coinlayer.com/api/live?access_key=" +
+    "http://api.coinlayer.com/api/live?access_key=" +
     coinLayerApiKey +
     "&Symbols=" +
     symbol;
@@ -48,6 +48,7 @@ var getCoinLayerDataBySymbol = function (symbol) {
   fetch(coinLayerURL)
     // Check if response is OK and if it is, load response as json
     .then((response) => {
+      console.log(response);
       if (response.ok) {
         return response.json();
       } else {
@@ -57,6 +58,7 @@ var getCoinLayerDataBySymbol = function (symbol) {
 
     // check if we recieved data back and if we did, display it to user
     .then((coinLayerData) => {
+      console.log(coinLayerData);
       if (coinLayerData != "" && coinLayerData != null) {
         displayCoinLayerData(coinLayerData);
       }
